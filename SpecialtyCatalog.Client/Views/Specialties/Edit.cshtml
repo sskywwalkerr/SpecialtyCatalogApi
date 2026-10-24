@@ -1,0 +1,31 @@
+@* Форма редактирования специальности *@
+@model SpecialtyDto
+
+@{
+    ViewData["Title"] = "Изменить специальность";
+}
+
+<h1>Изменить специальность</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <p>
+        <label asp-for="Code">Код</label><br />
+        <input asp-for="Code" />
+    </p>
+
+    <p>
+        <label asp-for="Name">Название</label><br />
+        <input asp-for="Name" />
+    </p>
+
+    <p>
+        <label asp-for="DirectionId">Направление</label><br />
+        <select asp-for="DirectionId" asp-items="ViewBag.Directions"></select>
+    </p>
+
+    <button type="submit">Сохранить</button>
+    <a asp-action="Index">Отмена</a>
+</form>
