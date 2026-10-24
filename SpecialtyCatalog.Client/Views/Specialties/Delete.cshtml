@@ -1,0 +1,16 @@
+@* Страница подтверждения удаления специальности *@
+@model SpecialtyDto
+
+@{
+    ViewData["Title"] = "Удалить специальность";
+}
+
+<h1>Удалить специальность</h1>
+
+<p>Вы уверены, что хотите удалить специальность «@Model.Code @Model.Name»?</p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit">Удалить</button>
+    <a asp-action="Index">Отмена</a>
+</form>
