@@ -1,0 +1,22 @@
+@* Форма редактирования направления *@
+@model DirectionDto
+
+@{
+    ViewData["Title"] = "Изменить направление";
+}
+
+<h1>Изменить направление</h1>
+
+<form asp-action="Edit" method="post">
+    @* Id не виден на странице, но должен уйти в контроллер, чтобы API понял, какую запись менять *@
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <p>
+        <label asp-for="Name">Название</label><br />
+        <input asp-for="Name" />
+    </p>
+
+    <button type="submit">Сохранить</button>
+    <a asp-action="Index">Отмена</a>
+</form>
