@@ -1,0 +1,37 @@
+@* Список направлений с поиском по названию *@
+@model List<DirectionDto>
+
+@{
+    ViewData["Title"] = "Направления";
+}
+
+<h1>Направления</h1>
+
+<p><a asp-action="Create">Добавить направление</a></p>
+
+@* Форма фильтра: отправляет GET-запрос /Directions?search=... *@
+<form asp-action="Index" method="get">
+    <input type="text" name="search" value="@ViewBag.Search" placeholder="Поиск по названию" />
+    <button type="submit">Найти</button>
+</form>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Название</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Изменить</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
