@@ -1,0 +1,44 @@
+@* Список специальностей с фильтрами по направлению и по тексту *@
+@model List<SpecialtyDto>
+
+@{
+    ViewData["Title"] = "Специальности";
+}
+
+<h1>Специальности</h1>
+
+<p><a asp-action="Create">Добавить специальность</a></p>
+
+@* Форма фильтра: GET /Specialties?directionId=...&search=... *@
+<form asp-action="Index" method="get">
+    <select name="directionId" asp-items="ViewBag.Directions">
+        <option value="">Все направления</option>
+    </select>
+    <input type="text" name="search" value="@ViewBag.Search" placeholder="Код или название" />
+    <button type="submit">Найти</button>
+</form>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Код</th>
+        <th>Название</th>
+        <th>Направление</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Code</td>
+            <td>@item.Name</td>
+            <td>@item.Direction?.Name</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Изменить</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
