@@ -1,0 +1,21 @@
+@* Форма добавления направления *@
+@model DirectionDto
+
+@{
+    ViewData["Title"] = "Добавить направление";
+}
+
+<h1>Добавить направление</h1>
+
+<form asp-action="Create" method="post">
+    @* Сюда попадает текст ошибки, если API отказал в сохранении *@
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <p>
+        <label asp-for="Name">Название</label><br />
+        <input asp-for="Name" />
+    </p>
+
+    <button type="submit">Сохранить</button>
+    <a asp-action="Index">Отмена</a>
+</form>
