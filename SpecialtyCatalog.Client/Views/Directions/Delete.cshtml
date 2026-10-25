@@ -1,0 +1,16 @@
+@model DirectionDto
+
+@{
+    ViewData["Title"] = "Удалить направление";
+}
+
+<h1>Удалить направление</h1>
+
+<p>Вы уверены, что хотите удалить направление «@Model.Name»?</p>
+<p>Вместе с ним удалятся все его специальности.</p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit">Удалить</button>
+    <a asp-action="Index">Отмена</a>
+</form>
