@@ -1,4 +1,3 @@
-@* Форма добавления специальности *@
 @model SpecialtyDto
 
 @{
@@ -22,7 +21,6 @@
 
     <p>
         <label asp-for="DirectionId">Направление</label><br />
-        @* Список направлений собирает контроллер в ViewBag.Directions *@
         <select asp-for="DirectionId" asp-items="ViewBag.Directions"></select>
     </p>
 
