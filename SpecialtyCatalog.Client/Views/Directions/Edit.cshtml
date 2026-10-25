@@ -8,7 +8,6 @@
 <h1>Изменить направление</h1>
 
 <form asp-action="Edit" method="post">
-    @* Id не виден на странице, но должен уйти в контроллер, чтобы API понял, какую запись менять *@
     <input type="hidden" asp-for="Id" />
     <div asp-validation-summary="All" class="text-danger"></div>
 
